@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radionic Fact Editor</title>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #0f0f0f;
+      color: #00ffcc;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    #fact-input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      background: #1a1a1a;
+      color: #00ffcc;
+      border: 1px solid #00ffcc;
+      margin-bottom: 1rem;
+    }
+    .symbol-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .symbol {
+      background: #222;
+      padding: 0.5rem 1rem;
+      border: 1px solid #00ffcc;
+      cursor: grab;
+      user-select: none;
+    }
+    #fact-area {
+      border: 1px dashed #00ffcc;
+      padding: 1rem;
+      min-height: 5rem;
+      background: #1a1a1a;
+    }
+    button {
+      background-color: #00ffcc;
+      color: #0f0f0f;
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    
+    <img src="pcs.jpg">
+  <h1>Radionic Fact Editor</h1>
+  <textarea id="fact-input" placeholder="Type your fact here..."></textarea>
+Enter 1st Combination
+  <div class="symbol-panel">
+    <div class="symbol" draggable="true">4×</div>
+    <div class="symbol" draggable="true">−Ψ</div>
+    <div class="symbol" draggable="true">Σµ</div>
+    <div class="symbol" draggable="true">+1ᵗ</div>
+    <div class="symbol" draggable="true">↻</div>
+    <div class="symbol" draggable="true">∩μ</div>
+    <div class="symbol" draggable="true">Δφ</div>
+    <div class="symbol" draggable="true">Rθ</div>
+    <div class="symbol" draggable="true">×s</div>
+    <div class="symbol" draggable="true">ƒₓ</div>
+    <div class="symbol" draggable="true">∅→α</div>
+    <div class="symbol" draggable="true">∴</div>
+  </div>
+ 
+  <div id="fact-area" contenteditable="true">Clear this field, drop symbols here to construct radionic string, include one of each symbol..</div>
+  <br>
+   enter second combination
+<div class="symbol-panel">
+  <div class="symbol" draggable="true">⟁ₒ</div>
+  <div class="symbol" draggable="true">≋χ</div>
+  <div class="symbol" draggable="true">₼ζ</div>
+  <div class="symbol" draggable="true">∗λ̊</div>
+  <div class="symbol" draggable="true">⇅◌</div>
+  <div class="symbol" draggable="true">ɴ∔</div>
+  <div class="symbol" draggable="true">⧖π</div>
+  <div class="symbol" draggable="true">↬₭</div>
+  <div class="symbol" draggable="true">⋄β̈</div>
+  <div class="symbol" draggable="true">⸮ψ</div>
+  <div class="symbol" draggable="true">ø⇌η</div>
+  <div class="symbol" draggable="true">⟠∇</div>
+</div><br>
+
+  <div id="fact-area" contenteditable="true">Enter these symbols here now, clear field too, include all symbols</div>
+  <br />
+  <button>Send Radionic Signal</button><br><br>
+Enter edit <br>
+<div id="fact-area" contenteditable="true">Type in the change you wish to make</div>
+  <br />
+  <button>Send Echo Target</button>
+  <script>
+    const symbols = document.querySelectorAll('.symbol');
+    const factArea = document.getElementById('fact-area');
+
+    symbols.forEach(sym => {
+      sym.addEventListener('dragstart', e => {
+        e.dataTransfer.setData('text/plain', sym.textContent);
+      });
+    });
+
+    factArea.addEventListener('dragover', e => e.preventDefault());
+    factArea.addEventListener('drop', e => {
+      e.preventDefault();
+      const data = e.dataTransfer.getData('text/plain');
+      const span = document.createElement('span');
+      span.textContent = data + ' ';
+      factArea.appendChild(span);
+    });
+
+
+    
+  </script>
+</body>
+</html>
